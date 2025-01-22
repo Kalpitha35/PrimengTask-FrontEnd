@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+/* Custom styling for the table */
+.pTable {
+    background-color: white; 
+    border-collapse: collapse; 
+}
+  
+  .pTable th, .pTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; 
+  }
+  
+  .pTable th {
+    background-color: #f4f4f4; 
+  }
+  
+  .pTable td button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .bin {
+    color: #f90606; 
+  }
+  
+  .edit {
+    color: #1b8107; 
+  }
+  
+  h1{
+    font-family: "Playfair Display", serif;
+
+  }
+  /* @media (prefers-color-scheme: dark) {
+    body {
+      background-color: white;
+      color: black;
+    }
+  } */
+   
+ 

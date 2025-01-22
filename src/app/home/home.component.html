@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-center fw-bolder m-5">
+        Employee Management
+    </h1>
+    <div class="m-4 d-flex flex-row justify-content-center ">
+        <app-add-employee-btn></app-add-employee-btn>
+        <app-search-button   (employeeListUpdated)="updateEmployeeList($event)"></app-search-button>
+
+        <app-sort-button [employeeDetails]="allEmployee"></app-sort-button>
+        
+       </div> 
+
+    <div  class="card">
+        <p-table class="pTable" [value]="allEmployee" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header>
+                <tr>
+                    <th class="pTable" >ID</th>
+                    <th>Name</th>
+                    <th>Email Id</th>
+                    <th>Designation</th>
+                    <!-- <th>Company Name</th> -->
+                    <th>#</th>
+                    <th>#</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-employee  let-i="rowIndex">
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td>{{ employee.username }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.job }}</td>
+                    <td><button (click)="deleteEmployee(employee.id)"><i class="fa-solid fa-trash bin"></i></button></td>
+                    <td><a routerLink="add-employee/{{employee.id}}" ><i class="fa-solid fa-pen-to-square edit"></i></a></td>
+                    
+                </tr>
+            </ng-template>
+        </p-table>
+
+   </div>
+   
+
+</div>
