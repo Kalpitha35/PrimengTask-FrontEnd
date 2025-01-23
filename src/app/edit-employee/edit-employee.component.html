@@ -1,5 +1,3 @@
-<!-- <button ><i class="fa-solid fa-pen-to-square edit"></i></button> -->
-
 <div>
     <p-button (click)="showDialog()" label="Edit" icon="fa-solid fa-pen-to-square" />
     <p-dialog header="EDIT EMPLOYEE" class="text-center" [modal]="true" [(visible)]="visible" [style]="{ width: '35rem' }">
@@ -17,17 +15,8 @@
                 }
         
                 <input [value]="employeeDetailsFromHome.job" [(ngModel)]="employeeDetailsFromHome.job" placeholder="Designation" name="job" formControlName="job"  type="text" class="form-control mt-3" id="exampleInputjob" aria-describedby="jobHelp">
-                <!-- @if (addEmployeeForm.get('job')?.errors && addEmployeeForm.get('job')?.touched) { -->
-                    <!-- <div class="text-danger fw-bolder">*Invalid Designation</div>
-        
-                } -->
                 
-                  <div class="d-flex justify-content-evenly">
-                 
-                        <button (click)="saveUpdates()"  class="btn btn-success mt-5 me-2" type="submit">SAVE UPDATES</button>
-                  
-                  </div>
-        
+                        <button (click)="saveUpdates()"  class="btn btn-success mt-5 me-2" type="submit">SAVE UPDATES</button>       
             </form>
    </p-dialog>
 </div>

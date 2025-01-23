@@ -47,7 +47,7 @@ export class HomeComponent {
     console.log("Data From employeeDetailsFromChild : "+JSON.stringify(employeeDetailsFromChild));
    
       
-      //api call
+      //api call  
       this.api.addEmployeeAPI(this.empDetailsFromAddBtn).subscribe((res:any)=>{
         alert("Employee Details Added Successfully!!!")
         this.getAllEmployee()
