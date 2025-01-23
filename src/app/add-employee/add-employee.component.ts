@@ -7,7 +7,7 @@ import { ServicesService } from '../services.service';
 @Component({
   selector: 'app-add-employee',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.css'
 })
@@ -59,10 +59,6 @@ export class AddEmployeeComponent {
     }
   }
 
-  updateEmployee(){
-    this.api.editUserAPI(this.id,this.singleEmployeeeDetails).subscribe((res:any)=>{
-      alert("Employee Details Updated Successfully!!!")
-    })
-  }
+  
 
 }

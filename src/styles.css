@@ -16,7 +16,7 @@
   }
   
   .pTable td button {
-    background: transparent;
+    /* background: transparent; */
     border: none;
     cursor: pointer;
   }

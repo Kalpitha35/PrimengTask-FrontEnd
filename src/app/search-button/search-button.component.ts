@@ -59,7 +59,7 @@ searchName() {
   // Optional: You can enable change detection if necessary
   // this.cdr.detectChanges();
 }
-
+           
 
 
 }

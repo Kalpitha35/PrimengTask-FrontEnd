@@ -6,12 +6,13 @@ import { ServicesService } from '../services.service';
 import { AddEmployeeBtnComponent } from '../add-employee-btn/add-employee-btn.component';
 import { SearchButtonComponent } from "../search-button/search-button.component";
 import { SortButtonComponent } from '../sort-button/sort-button.component';
+import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TableModule, RouterLink, FormsModule, AddEmployeeBtnComponent, SearchButtonComponent,SortButtonComponent],
+  imports: [TableModule, FormsModule, AddEmployeeBtnComponent,EditEmployeeComponent, SearchButtonComponent,SortButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -21,6 +22,8 @@ export class HomeComponent {
   statusArray:any=[]
   employeeDetails:any=this.allEmployee
   searchKey:string=""
+  empDetailsFromAddBtn:any = {}
+  employeeUpdatesFromEdit:any = {}
 
   dummyUpdate:any=[]
   constructor(private api:ServicesService,private fb:FormBuilder){}
@@ -38,10 +41,21 @@ export class HomeComponent {
       })
     })
   }
+
+  employeeAdded(employeeDetailsFromChild:any){
+    this.empDetailsFromAddBtn = employeeDetailsFromChild
+    console.log("Data From employeeDetailsFromChild : "+JSON.stringify(employeeDetailsFromChild));
+   
+      
+      //api call
+      this.api.addEmployeeAPI(this.empDetailsFromAddBtn).subscribe((res:any)=>{
+        alert("Employee Details Added Successfully!!!")
+        this.getAllEmployee()
+      })
+  }
   
- // Define the method to update the employee list
  updateEmployeeList(updatedEmployees: any[]) {
-  this.allEmployee = updatedEmployees;  // Update the displayed list (filtered or original)
+  this.allEmployee = updatedEmployees;  
   console.log("Updated Employee List: ", this.dummyAllEmployee);
 }
 
@@ -54,30 +68,15 @@ export class HomeComponent {
       this.getAllEmployee()
     })
   }  
-  // searchName() {
-  //   console.log(this.searchKey);
-    
-    
-  //   this.allEmployee = this.dummyAllEmployee.filter((item:any) =>  item.username.toLowerCase().includes(this.searchKey.toLowerCase())
-  //   );
-  //   console.log(this.dummyAllEmployee);
-    
-    
-  // }
 
-  // filterEmpByName(key:string,value:string){
-  //   this.allEmployee = this.dummyAllEmployee.filter((item:any)=>item[key].includes(value))
-  // }
-  // sort(order: 'asc' | 'desc') {
-  //   this.allEmployee.sort((a: any, b: any) => {
-  //     if (order === 'asc') {
-  //       return a.username > b.username ? 1 : -1; // Ascending order
-  //     } else {
-  //       return a.username < b.username ? 1 : -1; // Descending order
-  //     }
-  //   });
-  // }
-}
+  updatedDetails(data:any){
+    this.employeeUpdatesFromEdit = data
+      this.api.editUserAPI(this.employeeUpdatesFromEdit.id,this.employeeUpdatesFromEdit).subscribe((res:any)=>{
+        alert("Employee Details Updated Successfully!!!")
+      })
+    }
+  }
+
 
 
 
